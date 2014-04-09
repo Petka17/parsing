@@ -1,6 +1,6 @@
 <div class="row">
 
-	<div class="col-md-5">
+	<div class="col-md-7">
 		<div class="well well-lg">
 
 			<dl class="dl-horizontal">
@@ -15,10 +15,11 @@
 		</div>
 	</div>
 
-	<div class="col-lg-4 col-lg-offset-3 col-md-5 col-md-offset-2 col-sm-6">
-
-		<%= button_to "Загрузить", extract_category_path(@category), class: "btn btn-sm btn-primary center-block", method: :post %>
-
+	<div class="col-md-5">
+		<div class="well well-lg">
+			<%= button_to "Загрузить список подкатегорий", extract_category_path(@category), class: "btn btn-sm btn-primary center-block", method: :post %>
+			<%# button_to "Загрузить детальную информацию по продуктам", extract_prod_subcategory_path(@subcategory), class: "btn btn-sm btn-primary center-block", method: :post %>
+		</div>
 	</div>
 </div>
 

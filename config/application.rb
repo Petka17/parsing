@@ -26,7 +26,7 @@ module Parsing
     config.i18n.available_locales = :ru
     config.i18n.default_locale = :ru
     
-    config.serve_static_assets = true
+    config.serve_static_assets = false
 
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
     

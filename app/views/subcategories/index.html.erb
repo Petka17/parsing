@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-md-6">
+		<h1>Список подкатегорий</h1>
+	</div>
+	<div class="col-md-6">
+		<%= button_to "Загрузить", extract_subcategories_path, class: "btn btn-sm btn-primary center-block", method: :post %>
+	</div>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-condensed table-hover">
+		<tr>
+			<th>Категория</th>
+			<th>Подкатегория</th>
+			<th>URL</th>
+			<th>Количество</th>
+		</tr>
+		
+		<% @subcategories.each do |sub| %>
+			<tr>
+				<td><%= link_to sub.category_name, sub.category %></td>
+				<td><%= link_to sub.name, sub %></td>
+				<td><%= link_to sub.url_path, sub.url_path %></td>
+				<td><%= sub.child_num %></td>
+			</tr>
+		<% end %>
+
+	</table>
+</div>
+

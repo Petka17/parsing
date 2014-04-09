@@ -1,0 +1,45 @@
+<div class="row">
+
+	<div class="col-md-7">
+		<div class="well well-lg">
+
+			<dl class="dl-horizontal">
+				<dt>Категория</dt>
+				<dd><%= link_to @subcategory.category_name, @subcategory.category %></dd>
+				<dt>Подкатегория</dt>
+				<dd><%= @subcategory.name %></dd>
+				<dt>URL</dt>
+				<dd><%= link_to @subcategory.url_path, @subcategory.url_path %></dd>
+				<dt>Количество</dt>
+				<dd><%= @subcategory.child_num %></dd>
+			</dl>
+			
+		</div>
+	</div>
+
+	<div class="col-md-5">
+		<div class="well well-lg">
+			<%= button_to "Загрузить список продуктов", extract_subcategory_path(@subcategory), class: "btn btn-sm btn-primary center-block", method: :post %>
+			<%= button_to "Загрузить детальную информацию по продуктам", extract_prod_subcategory_path(@subcategory), class: "btn btn-sm btn-primary center-block", method: :post %>
+		</div>
+	</div>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-condensed">
+		<tr>
+			<th>Имя</th>
+			<th>URL</th>
+			<th>Количество</th>
+		</tr>
+		
+		<% @product_groups.each do |pg| %>
+			<tr>
+				<td><%= link_to pg.name, pg %></td>
+				<td><%= link_to pg.url_path, pg.url_path %></td>
+				<td><%= pg.child_num %></td>
+			</tr>
+		<% end %>
+
+	</table>
+</div>

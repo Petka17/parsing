@@ -1,0 +1,6 @@
+<% if @status == "" %>
+	$('#job-status').removeAttr('data-job_id').html("<h3>Завершилось</h3>");
+<% else %>
+	$('#job-status').html("<h3><%= @status %></h3>");
+	CategoryPoller.poll();
+<% end %>

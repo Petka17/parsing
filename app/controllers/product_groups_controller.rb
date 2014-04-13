@@ -1,8 +1,9 @@
 class ProductGroupsController < ApplicationController
 
 	before_filter :get_product_group, only: [:show, :extract_prod]
+  
   def index
-  	@product_groups = ProductGroup.all
+  	@product_groups = ProductGroup.product_group_list
   end
 
   def show

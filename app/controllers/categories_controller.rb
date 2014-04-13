@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
 
   def show
   	@subcategories = @category.subcategories.order(:name)
+
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   def extract_all
@@ -20,8 +25,14 @@ class CategoriesController < ApplicationController
   	redirect_to @category
   end
 
+  def extract_sub_prod
+    @job = Delayed::Job.enqueue(CategoryParserWorker.new(params[:id]))
+  end
+
   private
+
   	def get_category
   		@category = Category.find(params[:id])
   	end
+    
 end

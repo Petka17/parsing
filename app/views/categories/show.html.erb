@@ -7,10 +7,14 @@
 				<dt>Имя</dt>
 				<dd><%= @category.name %></dd>
 				<dt>URL</dt>
-				<dd><%= @category.url_path %></dd>
+				<dd><%= link_to @category.url_path, @category.url_path %></dd>
 				<dt>Количество</dt>
 				<dd><%= @category.child_num %></dd>
 			</dl>
+
+			<p class="download_link">
+			  Скачать: <%= link_to "Excel", category_path(@category, format: "xls") %>
+			</p>
 
 		</div>
 	</div>
@@ -18,7 +22,14 @@
 	<div class="col-md-5">
 		<div class="well well-lg">
 			<%= button_to "Загрузить список подкатегорий", extract_category_path(@category), class: "btn btn-sm btn-primary center-block", method: :post %>
-			<%# button_to "Загрузить детальную информацию по продуктам", extract_prod_subcategory_path(@subcategory), class: "btn btn-sm btn-primary center-block", method: :post %>
+			<%= button_to "Загрузить детальную информацию по продуктам", extract_prod_category_path(@category), class: "btn btn-sm btn-primary center-block", method: :post, remote: true %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="well-lg" id="job-status" data-url="/get_status/">
 		</div>
 	</div>
 </div>
@@ -34,7 +45,7 @@
 		<% @subcategories.each do |sub| %>
 			<tr>
 				<td><%= link_to sub.name, sub %></td>
-				<td><%= sub.url_path %></td>
+				<td><%= link_to sub.url_path, sub.url_path %></td>
 				<td><%= sub.child_num %></td>
 			</tr>
 		<% end %>

@@ -5,10 +5,10 @@ class ProductGroup < ActiveRecord::Base
 	has_many :features, dependent: :destroy
 	has_many :products, dependent: :destroy
 
-	def self.subcategory_list
+	def self.product_group_list
 		joins(:subcategory, :category)
-		.select('subcategory.name as subcategory_name, categories.name as category_name, subcategories.*')
-		.order('category_name, name')
+		.select('subcategories.name as subcategory_name, categories.name as category_name, product_groups.*')
+		.order('category_name, subcategory_name, name')
 	end
 
 	def category_name

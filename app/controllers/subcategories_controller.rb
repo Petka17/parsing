@@ -1,12 +1,12 @@
 class SubcategoriesController < ApplicationController
 
 	before_filter :get_subcategory, only: [:show, :extract_pg, :extract_prod]
+  
   def index
   	@subcategories = Subcategory.subcategory_list
   end
 
   def show
-  	@subcategory = Subcategory.find(params[:id])
   	@product_groups = @subcategory.product_groups.order('name')
   end
 

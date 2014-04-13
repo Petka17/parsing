@@ -10,6 +10,10 @@ Parsing::Application.routes.draw do
     member do
       post 'extract' => 'categories#extract_sub'
     end
+
+    member do
+      post 'extract_prod' => 'categories#extract_sub_prod'
+    end
   end
 
   resources :subcategories do
@@ -28,6 +32,8 @@ Parsing::Application.routes.draw do
       post 'extract' => 'product_groups#extract_prod'
     end
   end
+
+  match '/get_status/:id', to: 'delayed_jobs#get_status', via: 'get'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

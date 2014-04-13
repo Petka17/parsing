@@ -48,7 +48,7 @@ class CategoryLoader
 		end
 	end
 
-	def self.extract_pg(subcategory)
+	def self.extract_pg(subcategory, job = nil)
 
 		subcategory.product_groups.delete_all
 
@@ -142,6 +142,14 @@ class CategoryLoader
 		subcategory.product_groups.each do |pg|
 			CategoryLoader.extract_prod(pg)
 		end		
+	end
+
+
+	def self.extract_cat_sub_prod(category)
+		category.subcategories.each do |sub|
+			extract_pg(sub)
+			extract_sub_prod(sub)
+		end
 	end
 	
 end

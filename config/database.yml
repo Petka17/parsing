@@ -1,8 +1,0 @@
-development:
-  adapter:  postgresql
-  encoding: utf-8
-  database: parsing_dev
-  host:     localhost
-  pool:     5
-  username: parsing
-  password: secret
